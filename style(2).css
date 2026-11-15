@@ -1,0 +1,1390 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+
+/* ======================
+   container
+====================== */
+
+.container {
+  max-width: 1270px;
+  margin: 0 auto;
+  padding: 0px;
+}
+
+
+/* ======================
+   ヘッダー
+====================== */
+
+header {
+  background-color: #222;
+  color: white;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100px;
+  position: relative;
+}
+
+.inquiry {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.language-switching {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.language-switching button {
+  padding: 10px 30px;
+  border: none;
+  background-color: #777;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+
+/* ======================
+   「しゅわ／ゆびもじ」ボタン
+====================== */
+
+.language-button {
+  border: none;
+
+  background-color: #888;
+  color: white;
+  box-shadow: 0 7px #4a4747;
+
+  padding: 12px 30px;
+
+  font-size: 22px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+
+/* 選択されている方 */
+
+.language-button.active {
+  position: relative;
+  background-color: #444;
+  box-shadow: none;
+  top: 7px;
+}
+
+
+/* ======================
+   手話検索
+====================== */
+
+.search-area {
+  display: flex;
+  margin-left: auto;
+  gap: 5px;
+}
+
+.search-area input {
+  width: 200px;
+  height: 40px;
+
+  padding: 5px 10px;
+
+  font-size: 16px;
+}
+
+.search-area button {
+  height: 40px;
+
+  padding: 0 15px;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+/* 見つからなかった場合 */
+.no-result {
+  grid-column: 1 / -1;
+
+  text-align: center;
+
+  font-size: 24px;
+  font-weight: bold;
+
+  color: #555;
+}
+
+
+/* ======================
+   メイン部分
+====================== */
+main {
+  background-color: #0b5d1e;
+  min-height: calc(100vh - 100px);
+}
+
+
+.main-container {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  
+  /* 左右の間隔を空ける */
+  gap: 20px;
+}
+
+
+/* ======================
+   左側 
+====================== */
+.learning-area {
+  position: relative;
+  width: 75%;
+  background-color: #ffffcc;
+  padding: 5px;
+  margin-right: 20px;
+}
+
+/* 
+   最初のカテゴリー案内
+ */
+
+.category-guide {
+  position: relative;
+
+  width: 100%;
+  height: calc(100vh - 110px);
+
+  min-height: 600px;
+
+  overflow: hidden;
+}
+
+
+/* セリフ全体 */
+.guide-speech {
+  position: absolute;
+
+  top: 80px;
+  left: 20px;
+
+  width: 78%;
+
+  z-index: 1;
+}
+
+
+/* セリフ画像 */
+.guide-speech-image {
+  width: 100%;
+  height: auto;
+
+  display: block;
+}
+
+
+/* セリフ中央の文字 */
+.guide-message {
+  position: absolute;
+
+  top: 45%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 80%;
+
+  margin: 0;
+
+  text-align: center;
+
+  font-size: 32px;
+  font-weight: bold;
+
+  line-height: 1.5;
+
+  color: black;
+}
+
+
+/* たすくイラスト */
+.guide-character {
+  position: absolute;
+
+  right: -10px;
+  bottom: 0;
+
+  width: 35%;
+  height: auto;
+
+  z-index: 2;
+}
+
+
+/* ======================
+   右側 
+====================== */
+.category-list {
+  width: 25%;
+  background-color: #afe39b;
+  padding: 15px;
+
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+
+/* 
+   しらべる・クイズボタン
+*/
+
+.mode-switch {
+  display: flex;
+  align-items: center;
+}
+
+
+/* 選択中カテゴリーを左側に表示 */
+.mode-switch::after {
+  content: attr(data-category);
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: 8px 20px;
+
+  background-color: #42b951;
+  border: 1px solid black;
+  border-radius: 10px;
+
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+/* 通常状態 = 薄いグレー */
+
+.mode-button {
+  border: none;
+  background-color: #888;
+  color: white;
+  padding: 12px 25px;
+  box-shadow: 0 7px #4a4747;
+
+  font-size: 20px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+
+/* 選択されているボタン */
+
+.mode-button.active {
+  position: relative;
+  background-color: #444;
+  box-shadow: none;
+  top: 7px;
+}
+
+
+/* ======================
+   説明文
+====================== */
+
+.subtitle {
+  text-align: center;
+  color: #149447;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+/* ======================
+  「手話」ボタン
+   調べるモード
+====================== */
+
+.item-contents {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px 20px;
+  width: 100%;
+
+  max-height: 520px;
+  overflow-y: auto; /* 中身が縦方向にはみ出したときだけスクロールバーを表示する */
+
+  padding-right: 10px;
+}
+
+
+/* 1つ1つのアイテム */
+.item {
+  width: 100%;
+
+  text-align: center;
+
+  /* Gridの幅からはみ出さない */
+  min-width: 0;
+}
+
+
+/* 静止画像を表示する場所 */
+.youtube-box {
+  position: relative;
+  width: 100%;
+
+  /* 高さを固定 */
+  /*height: 170px;*/
+
+  /* アスペクト比を維持  よこ/たて */
+  aspect-ratio: 16 / 9;
+
+  border: 3px solid #06394c;
+
+  /* 画像がはみ出さないようにする */
+  overflow: hidden;
+
+  cursor: pointer;
+}
+
+
+/* 静止画像 */
+.video-thumbnail {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  object-fit: contain;
+
+  display: block;
+}
+
+/* 「覚える」などの文字 */
+.item-title {
+  margin: 10px 0 0;
+
+  font-size: 28px;
+  font-weight: bold;
+}
+
+
+/* 画像アイコン＋吹き出し全体 */
+.image-icon-wrapper {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  z-index: 3;
+}
+
+
+/* 画像表示アイコン */
+.image-display-icon {
+  width: 40px;
+  height: 40px;
+
+  object-fit: contain;
+
+  display: block;
+
+  cursor: pointer;
+}
+
+
+/* 吹き出し */
+.image-tooltip {
+  display: none;
+
+  position: absolute;
+
+  top: 45px;
+  left: 0;
+
+  width: max-content;
+  max-width: 220px;
+
+  padding: 8px 12px;
+
+  background-color: palegoldenrod;
+
+  border: 1px solid #666;
+  border-radius: 8px;
+
+  color: black;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  white-space: nowrap;
+
+  z-index: 10;
+
+  pointer-events: none;
+}
+
+
+/* アイコンにカーソルを乗せたとき */
+.image-icon-wrapper:hover .image-tooltip {
+  display: block;
+}
+
+
+/* ======================
+   クイズモード
+====================== */
+
+.quiz-screen {
+  display: none;
+}
+
+
+.quiz-content {
+  text-align: center;
+}
+
+
+.quiz-video {
+  width: 60%;
+  height: 270px;
+
+  margin: 0 auto 15px;
+
+  background-color: #176783;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 70px;
+}
+
+
+.quiz-video iframe {
+  width: 100%;
+  height: 100%;
+
+  border: none;
+}
+
+
+.answer-area {
+  display: flex;
+  justify-content: center;
+
+  gap: 10px;
+}
+
+
+.answer-area input {
+  width: 300px;
+  height: 40px;
+}
+
+
+.answer-area button {
+  padding: 0 20px;
+}
+
+/*
+.view-answer-button {
+  margin-top: 15px;
+  padding: 8px 20px;
+}
+  */
+
+
+/* ======================
+   クイズモード
+   回答後
+   
+   最初は「正解」と「けっかをみる／つぎへ」を非表示
+====================== */
+
+/* 正解 */
+.quiz-answer-title {
+  display: none;
+
+  margin: 20px 0;
+
+  text-align: center;
+
+  font-size: 40px;
+  font-weight: bold;
+}
+
+
+/* 回答後のボタン */
+.quiz-after-buttons {
+  display: none;
+
+  justify-content: center;
+
+  gap: 30px;
+}
+
+
+.view-results-button,
+.next-button {
+  padding: 10px 25px;
+
+  border: 1px solid black;
+  border-radius: 8px;
+
+  background-color: #20ed65;
+  color: black;
+
+  font-size: 20px;
+  font-weight: bold;
+
+  text-decoration: none;
+}
+
+
+/* ======================
+   右カテゴリー
+====================== */
+
+.category-title {
+  margin: 0 0 10px;
+
+  padding: 8px;
+
+  background-color: #42b951;
+
+  border: 1px solid black;
+  border-radius: 10px;
+
+  text-align: center;
+
+  font-size: 18px;
+}
+
+
+/* カテゴリーボタン */
+/*
+.category-item {
+  display: block;
+
+  width: 100%;
+
+  margin-bottom: 10px;
+  padding: 10px;
+
+  border: 1px solid black;
+  border-radius: 10px;
+
+  background-color: #20ed65;
+
+  font-size: 25px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+  */
+
+
+/*
+.category-item {
+background-color: lightgreen;
+border: 1px solid green;
+border-radius: 8px;
+cursor: pointer;
+}
+*/
+
+
+/* ======================
+   指文字ページ
+====================== */
+
+#finger-page {
+  display: none;
+}
+
+.finger-chart {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.finger-chart-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.finger-hotspot {
+  position: absolute;
+
+  border: none;
+  background-color: transparent;
+
+  /*
+  border: 2px solid red;
+  background-color: rgba(255, 0, 0, 0.15);
+  */
+
+
+  cursor: pointer;
+}
+
+
+/*
+CSSは手話側の .category-item と同じ見た目を使いたいので、まとめて指定できます。↓
+*/
+
+.category-item,
+.finger-category-item {
+
+  display: block;
+
+  width: 100%;
+
+  margin-bottom: 10px;
+  padding: 10px;
+
+  border: 1px solid black;
+  border-radius: 10px;
+
+  background-color: #20ed65;
+
+  font-size: 25px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+/* 選択中のカテゴリーボタン */
+.category-item.active,
+.finger-category-item.active {
+  background-color: #0b8f38;
+  color: white;
+}
+
+
+/* ======================
+   動画モーダル
+====================== */
+
+.video-modal {
+  display: none;
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.7);
+
+  z-index: 1000;
+
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* モーダル本体 */
+
+.video-modal-content {
+  position: relative;
+
+  /* width: 600px; */
+  /* 
+  PC → 最大600px
+  小さい画面 → 画面幅の90%
+   */
+  width: min(600px, 90%);
+
+  background-color: white;
+
+  padding: 30px;
+
+  text-align: center;
+}
+
+
+/* YouTube動画 */
+
+.modal-youtube {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  background-color: #176783;
+}
+
+
+.modal-youtube iframe {
+  width: 100%;
+  height: 100%;
+
+  border: none;
+}
+
+
+/* タイトル */
+
+.modal-title {
+  margin: 20px 0 0;
+
+  font-size: 60px;
+  font-weight: bold;
+}
+
+
+/* ×ボタン */
+
+.video-modal-close {
+  position: absolute;
+
+  top: -25px;
+  right: -25px;
+
+  width: 60px;
+  height: 60px;
+
+  border: none;
+  border-radius: 50%;
+
+  background-color: black;
+  color: white;
+
+  font-size: 35px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  z-index: 10;
+}
+
+
+/* ======================
+   静止画像モーダル
+====================== */
+
+.image-modal {
+  display: none;
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.7);
+
+  z-index: 1100;
+
+  justify-content: center;
+  align-items: center;
+}
+
+
+.image-modal-content {
+  position: relative;
+
+  width: min(750px, 90%);
+
+  background-color: white;
+
+  padding: 20px;
+
+  text-align: center;
+}
+
+
+#modal-image {
+  width: 100%;
+  height: auto;
+
+  max-height: 75vh;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+
+.image-modal-title {
+  margin: 15px 0 0;
+
+  font-size: 40px;
+  font-weight: bold;
+}
+
+
+.image-modal-close {
+  position: absolute;
+
+  top: -25px;
+  right: -25px;
+
+  width: 60px;
+  height: 60px;
+
+  border: none;
+  border-radius: 50%;
+
+  background-color: black;
+  color: white;
+
+  font-size: 35px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+
+/* ======================
+   指文字
+   おともだち・せんせい
+====================== */
+
+.finger-item-contents {
+  display: none;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 30px 20px;
+
+  width: 100%;
+
+  max-height: 520px;
+
+  overflow-y: auto;
+
+  padding-right: 10px;
+}
+
+
+/* 1つ1つのアイテム */
+.finger-item {
+  width: 100%;
+
+  min-width: 0;
+
+  text-align: center;
+}
+
+
+/* 動画の静止画像 */
+.finger-youtube-box {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 16 / 9;
+
+  border: 3px solid #06394c;
+
+  overflow: hidden;
+
+  cursor: pointer;
+}
+
+
+.finger-video-thumbnail {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  background-color: white;
+
+  display: block;
+}
+
+
+/* 下の文字 */
+.finger-item-title {
+  margin: 10px 0 0;
+
+  font-size: 28px;
+  font-weight: bold;
+}
+
+
+/* 最初は非表示
+最初の「ゆびもじひょう」では検索欄を出したくない*/
+.finger-item-search-area {
+  display: none;
+}
+
+/* 両ページのクイズは共通クラスで同じ配置・見た目にする。 */
+.quiz-video.quiz-complete {
+  padding: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* しゅわ：準備中のカテゴリー */
+#sign-page .category-item.category-incomplete {
+  position: relative;
+  background-color: #a5ad9b;
+  color: #30382d;
+  border-color: #69765f;
+}
+#sign-page .category-item.category-incomplete.active {
+  background-color: #707e67;
+  color: white;
+}
+#sign-page .category-incomplete > .image-tooltip {
+  top: auto;
+  bottom: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  max-width: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  font-size: 16px;
+  line-height: 1.5;
+  z-index: 10;
+}
+
+
+/* カーソルを重ねている間だけメッセージを表示 */
+#sign-page .category-incomplete:hover > .image-tooltip {
+  display: block;
+}
+
+
+/* しゅわ：未完成カテゴリーを選択したときの左側画面 */
+#sign-incomplete-screen[hidden] { display: none; }
+#sign-incomplete-screen {
+  min-height: 520px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+#sign-incomplete-screen img {
+  display: block;
+  max-width: 100%;
+  max-height: 65vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+/* 未完成時もカテゴリー名は表示し、操作できないモードボタンは隠す */
+#sign-page .mode-switch.show-incomplete .mode-button,
+#sign-page .mode-switch.show-incomplete .search-area { display: none !important; }
+#sign-page .mode-switch.show-incomplete { min-height: 52px; }
+
+
+
+
+
+
+
+
+
+/* 名前の表示 */
+#finger-page .finger-item-title {
+  text-align: center;
+  margin-top: 10px;
+}
+
+
+
+
+/* =========================
+   ゆびもじ：おともだち・せんせい
+   指文字画像のサイズ調整
+========================= */
+
+/* 指文字画像を横並びにする */
+/* 指文字画像を1行につき最大5枚表示 */
+/* 指文字画像を中央揃えで表示 */
+#finger-page .finger-spelling-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  width: 100%;
+  max-width: 445px;
+  margin: 0 auto;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+
+/* 指文字画像のサイズ */
+#finger-page .finger-spelling-images img {
+  width: 85px;   /* 画像の横幅 */
+  height: 100px;  /* 画像の高さ */
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+
+
+
+/* 名前の表示 */
+#finger-page .finger-item-title {
+  margin-top: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+
+
+/* =========================
+   指文字の白色背景
+========================= */
+
+#finger-page .finger-image-button {
+  display: block;
+  width: 100%;
+  min-height: 150px;
+  padding: 10px;
+  margin: 0;
+
+  background-color: white;
+  border: none;
+
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+#finger-page .finger-image-button:hover {
+  outline: 2px solid #42b951;
+}
+
+/* 画像の中央揃え */
+#finger-page .finger-image-button .finger-spelling-images {
+  margin: 0 auto;
+}
+
+
+/* =========================
+   指文字専用モーダル
+========================= */
+
+.finger-spelling-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+
+  background-color: rgba(0, 0, 0, 0.75);
+
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1200;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* 白いモーダル本体 */
+.finger-spelling-modal-content {
+  position: relative;
+
+  width: min(850px, 95%);
+  max-height: 90vh;
+  overflow-y: auto;
+
+  background-color: white;
+  padding: 35px 20px 25px;
+
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* 指文字画像を中央揃え・最大5枚 */
+.finger-modal-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+
+  gap: 15px;
+
+  max-width: 660px;
+  margin: 0 auto;
+}
+
+/* 指文字画像と文字のセット */
+.finger-modal-letter-item {
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* モーダル内の指文字画像 */
+.finger-modal-letter-item img {
+  width: 110px;
+  height: 140px;
+  object-fit: contain;
+  display: block;
+}
+
+/* 画像の下の文字 */
+.finger-modal-letter-item p {
+  margin: 8px 0 0;
+  font-size: 26px;
+  font-weight: bold;
+  color: black;
+}
+
+/* モーダル下部の名前 */
+.finger-modal-title {
+  margin: 25px 0 0;
+  font-size: 32px;
+  font-weight: bold;
+  color: black;
+}
+
+/* 閉じるボタン */
+.finger-modal-close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+
+  width: 45px;
+  height: 45px;
+
+  border: none;
+  background-color: black;
+  color: white;
+
+  font-size: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+
+/* しゅわクイズ結果モーダル */
+.quiz-result-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+  background: rgba(0, 0, 0, 0.75);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.quiz-result-modal.is-open {
+  display: flex;
+}
+
+.quiz-result-modal-content {
+  position: relative;
+  width: min(500px, 100%);
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 30px 25px 25px;
+  background: white;
+  color: black;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.quiz-result-modal-content h2 {
+  margin: 5px 0 20px;
+  font-size: 28px;
+}
+
+#quiz-result-score {
+  font-size: 28px;
+  font-weight: bold;
+  color: #078b43;
+  margin: 15px 0 25px;
+}
+
+.quiz-result-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  font-size: 20px;
+}
+
+.quiz-result-row span {
+  font-size: 16px;
+  color: #555;
+}
+
+.quiz-result-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: black;
+  color: white;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.quiz-result-done {
+  margin-top: 25px;
+  padding: 12px 35px;
+  background: #12df66;
+  border: 1px solid #087b38;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+
+
+
+/* =========================
+   クイズの正解・不正解画像
+========================= */
+
+/* 正誤画像と答えを横並び・中央揃え */
+.quiz-answer-title {
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* 正解・不正解画像のサイズ */
+.quiz-answer-title .quiz-result-mark {
+  width: 65px;
+  height: 65px;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+}
+
+
+
+
+/* =========================
+   ゆびもじひょう ランダムクイズ
+========================= */
+
+/* 指文字画像を横並び・中央揃え */
+#finger-quiz-video:has(.finger-random-quiz-images) {
+  width: 100%;
+  height: auto;
+  min-height: 180px;
+  aspect-ratio: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  box-sizing: border-box;
+}
+
+.finger-random-quiz-images {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  width: 100%;
+  padding: 20px 10px;
+  box-sizing: border-box;
+}
+
+/* 画像1枚ずつのサイズ */
+.finger-random-quiz-images img {
+  width: 75px;
+  height: 100px;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+
+
+
+
+/* =========================
+   ゆびもじ：画像と動画の切り替え
+========================= */
+
+/* 指文字画像全体の外枠 */
+#finger-page .finger-image-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* 動画を開くボタン */
+#finger-page .finger-image-wrapper .finger-image-button {
+  width: 100%;
+  cursor: pointer;
+}
+
+/* 左上の画像アイコンを配置 */
+#finger-page .finger-image-icon-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+}
+
+/* 画像表示アイコンのボタン */
+#finger-page .finger-image-open-button {
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* アイコン画像 */
+#finger-page .finger-image-open-button img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* アイコンにカーソルを重ねたら説明を表示 */
+#finger-page .finger-image-icon-wrapper:hover .image-tooltip,
+#finger-page .finger-image-icon-wrapper:focus-within .image-tooltip {
+  display: block;
+}
+
+/* アイコンの説明文 */
+#finger-page .finger-image-icon-wrapper .image-tooltip {
+  top: 45px;
+  left: 0;
+}

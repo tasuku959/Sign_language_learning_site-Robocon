@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>手話学習サイト</title>
+  <link rel="stylesheet" href="style(2).css">
+</head>
+
+<body>
+
+  <header>
+    <div class="container header-inner">
+
+      <p class="inquiry">おといあわせ</p>
+
+      <div class="language-switching">
+        <button type="button"
+        class="language-button active"
+        id="sign-button">しゅわ</button>
+
+        <button type="button" class="language-button" id="finger-button">ゆびもじ</button>
+      </div>
+
+    </div>
+  </header>
+
+
+<!-- =========================
+     しゅわページ
+========================= -->
+<div id="sign-page">
+  <main>
+
+    <div class="container main-container">
+
+      <!-- 左側 -->
+      <section class="learning-area">
+
+        <!-- =========================
+           しゅわ：最初の案内画面
+        ========================= -->
+        <div
+          class="category-guide"
+          id="sign-category-guide">
+
+          <!-- セリフ -->
+          <div class="guide-speech">
+
+            <img
+              src="images/吹き出し.png"
+              alt=""
+              class="guide-speech-image">
+
+            <p class="guide-message">
+              やってみたいしゅわを<br>
+              えらんでね！😊
+            </p>
+
+          </div>
+
+
+          <!-- たすくイラスト -->
+          <img
+            src="images/たすくイラスト化.png"
+            alt="カテゴリーをえらんでね"
+            class="guide-character">
+
+        </div>
+
+        <!-- しらべる・クイズ切り替えボタン -->
+        <div class="mode-switch" data-category="ロボコンでよくつかうしゅわ">
+
+          <button
+            type="button"
+            class="mode-button active"
+            id="search-button">
+            しらべる
+          </button>
+
+          <button
+            type="button"
+            class="mode-button"
+            id="quiz-button">
+            クイズ
+          </button>
+
+          <!-- しゅわ検索エリア -->
+          <!-- 検索 -->
+          <div class="search-area">
+
+            <input
+              type="text"
+              id="sign-search-input"
+              placeholder="しゅわを けんさく">
+
+            <button
+              type="button"
+              id="sign-search-button">
+              けんさく
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- =========================
+            しゅわページ
+        ========================= -->
+        <!-- =========================
+             調べるモード
+        ========================== -->
+
+        <div
+          class="learning-screen"
+          id="search-screen">
+
+          <p class="subtitle">
+            がめんを おすと、<br>
+            しゅわの どうがが はじまるよ！
+          </p>
+
+          <div class="item-contents">
+          </div>
+
+        </div>
+
+
+        <!-- =========================
+            しゅわページ
+        ========================= -->
+        <!-- =========================
+             クイズモード
+        ========================== -->
+
+        <div
+          class="quiz-screen"
+          id="quiz-screen">
+
+          <p class="subtitle">
+            したのどうがの しゅわをみて、
+            なまえをいれてね😊<br>
+            【ちゅうい】ひらがなでいれてね！
+          </p>
+
+
+        <!-- =========================
+            しゅわページ
+        ========================= -->
+        <!-- =========================
+             クイズモード
+        ========================== -->
+        <div class="quiz-content">
+
+          <!-- YouTube動画 -->
+          <div
+            class="quiz-video"
+            id="quiz-video">
+          </div>
+
+
+          <!-- 回答入力 -->
+          <div
+            class="answer-area"
+            id="quiz-answer-area">
+
+            <input
+              type="text"
+              id="quiz-answer-input"
+              placeholder="こたえを いれてね">
+
+            <button
+              type="button"
+              id="quiz-answer-button">
+              こたえる
+            </button>
+
+          </div>
+
+
+          <!-- 正解を表示する場所 -->
+          <p
+            class="quiz-answer-title"
+            id="quiz-answer-title">
+          </p>
+
+
+          <!-- 回答後に表示 -->
+          <div
+            class="quiz-after-buttons"
+            id="quiz-after-buttons">
+
+            <a
+              href="#"
+              class="view-results-button"
+              id="view-results-button">
+              けっかをみる
+            </a>
+
+            <a
+              href="#"
+              class="next-button"
+              id="next-quiz-button">
+              つぎへ
+            </a>
+
+          </div>
+
+        </div>
+
+        </div>
+
+        <!-- 未完成カテゴリー用の案内画像 -->
+        <div id="sign-incomplete-screen" class="sign-incomplete-screen" hidden>
+          <img src="images/未完成ですごめんなさい.png" alt="まだつくっているとちゅうだよ！ちょっとまっててね">
+        </div>
+
+      </section>
+
+
+      <!-- 右側カテゴリー -->
+      <aside class="category-list">
+
+        <button class="category-item active"
+        data-category="robocon">
+          ロボコンでよく<br>
+          つかうしゅわ
+        </button>
+
+        <button class="category-item category-incomplete"
+        data-category="greetings" aria-describedby="category-tooltip-1">
+        あいさつ
+          <span class="image-tooltip" role="tooltip" id="category-tooltip-1">まだつくっているとちゅうだよ！<br>
+ちょっとまっててね💦🙏</span>
+        </button>
+
+        <button class="category-item category-incomplete"
+        data-category="school" aria-describedby="category-tooltip-2">
+        がっこう
+          <span class="image-tooltip" role="tooltip" id="category-tooltip-2">まだつくっているとちゅうだよ！<br>
+ちょっとまっててね💦</span>
+        </button>
+
+        <button class="category-item category-incomplete"
+        data-category="family" aria-describedby="category-tooltip-3">
+        かぞく
+          <span class="image-tooltip" role="tooltip" id="category-tooltip-3">まだつくっているとちゅうだよ！<br>
+ちょっとまっててね💦</span>
+        </button>
+
+        <button class="category-item category-incomplete" data-category="sports" aria-describedby="category-tooltip-4">
+        スポーツ
+          <span class="image-tooltip" role="tooltip" id="category-tooltip-4">まだつくっているとちゅうだよ！<br>
+ちょっとまっててね💦</span>
+        </button>
+        
+        <button class="category-item category-incomplete" data-category="food" aria-describedby="category-tooltip-5">
+        たべもの
+          <span class="image-tooltip" role="tooltip" id="category-tooltip-5">まだつくっているとちゅうだよ！<br>
+ちょっとまっててね💦</span>
+        </button>
+
+        <button class="category-item category-incomplete" data-category="animal" aria-describedby="category-tooltip-6">
+        いきもの
+          <span class="image-tooltip" role="tooltip" id="category-tooltip-6">まだつくっているとちゅうだよ！<br>
+ちょっとまっててね💦</span>
+        </button>
+
+        <button class="category-item category-incomplete" data-category="time" aria-describedby="category-tooltip-7">
+        じかん
+          <span class="image-tooltip" role="tooltip" id="category-tooltip-7">まだつくっているとちゅうだよ！<br>
+ちょっとまっててね💦</span>
+        </button>
+
+        <button class="category-item category-incomplete" data-category="question" aria-describedby="category-tooltip-8">
+        ぎもんし
+          <span class="image-tooltip" role="tooltip" id="category-tooltip-8">まだつくっているとちゅうだよ！<br>
+ちょっとまっててね💦</span>
+        </button>
+
+        <button class="category-item category-incomplete" data-category="connection" aria-describedby="category-tooltip-9">
+        せつぞくし
+          <span class="image-tooltip" role="tooltip" id="category-tooltip-9">まだつくっているとちゅうだよ！<br>
+ちょっとまっててね💦</span>
+        </button>
+
+      </aside>
+
+    </div>
+
+  </main>
+</div>
+
+
+<!-- =========================
+     ゆびもじページ
+========================= -->
+<div id="finger-page">
+
+  <main>
+
+    <div class="container main-container">
+
+      <!-- 左側 -->
+      <section class="learning-area">
+
+        <!-- =========================
+            ゆびもじ：最初の案内画面
+        ========================= -->
+        <div
+          class="category-guide"
+          id="finger-category-guide">
+
+          <!-- セリフ -->
+          <div class="guide-speech">
+
+            <img
+              src="images/吹き出し.png"
+              alt=""
+              class="guide-speech-image">
+
+            <p class="guide-message">
+              やってみたいゆびもじを<br>
+              えらんでね！😊
+            </p>
+
+          </div>
+
+
+          <!-- たすくイラスト -->
+          <img
+            src="images/たすくイラスト化.png"
+            alt="カテゴリーをえらんでね"
+            class="guide-character">
+
+        </div>
+
+        <div
+          class="mode-switch"
+          data-category="ゆびもじひょう">
+
+          <button
+            type="button"
+            class="mode-button active"
+            id="finger-search-button">
+            しらべる
+          </button>
+
+          <button
+            type="button"
+            class="mode-button"
+            id="finger-quiz-button">
+            クイズ
+          </button>
+
+
+          <!-- 指文字：おともだち・せんせい検索 -->
+          <div
+            class="search-area finger-item-search-area">
+
+            <input
+              type="text"
+              id="finger-item-search-input"
+              placeholder="なまえを けんさく">
+
+            <button
+              type="button"
+              id="finger-item-search-button">
+              けんさく
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- 指文字：しらべる画面 -->
+        <div
+          class="learning-screen"
+          id="finger-search-screen">
+
+          <p class="subtitle" id="finger-subtitle">
+            がめんを おすと、<br>
+            ゆびもじの どうがが はじまるよ！
+          </p>
+
+
+          <!-- 指文字表 -->
+          <div class="finger-chart" id="finger-chart">
+
+            <img
+              src="Fingerspelling/指文字表.png"
+              alt="指文字表"
+              class="finger-chart-image">
+
+              <!-- あ行 -->
+              <button
+                class="finger-hotspot"
+                data-video-id="あのYouTubeID"
+                data-letter="あ"
+                style="
+                top: 0%;
+                left: 90%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="いのYouTubeID"
+                data-letter="い"
+                style="
+                top: 20%;
+                left: 90%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="うのYouTubeID"
+                data-letter="う"
+                style="
+                top: 40%;
+                left: 90%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="えのYouTubeID"
+                data-letter="え"
+                style="
+                top: 60%;
+                left: 90%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="おのYouTubeID"
+                data-letter="お"
+                style="
+                top: 80%;
+                left: 90%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+
+              <!-- か行 -->
+              <button
+                class="finger-hotspot"
+                data-video-id="かのYouTubeID"
+                data-letter="か"
+                style="
+                top: 0%;
+                left: 80%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="きのYouTubeID"
+                data-letter="き"
+                style="
+                top: 20%;
+                left: 80%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="くのYouTubeID"
+                data-letter="く"
+                style="
+                top: 40%;
+                left: 80%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="けのYouTubeID"
+                data-letter="け"
+                style="
+                top: 60%;
+                left: 80%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="このYouTubeID"
+                data-letter="こ"
+                style="
+                top: 80%;
+                left: 80%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+
+              <!-- さ行 -->
+              <button
+                class="finger-hotspot"
+                data-video-id="さのYouTubeID"
+                data-letter="さ"
+                style="
+                top: 0%;
+                left: 70%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="しのYouTubeID"
+                data-letter="し"
+                style="
+                top: 20%;
+                left: 70%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="すのYouTubeID"
+                data-letter="す"
+                style="
+                top: 40%;
+                left: 70%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="せのYouTubeID"
+                data-letter="せ"
+                style="
+                top: 60%;
+                left: 70%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="そのYouTubeID"
+                data-letter="そ"
+                style="
+                top: 80%;
+                left: 70%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+
+              <!-- た行 -->
+              <button
+                class="finger-hotspot"
+                data-video-id="たのYouTubeID"
+                data-letter="た"
+                style="
+                top: 0%;
+                left: 60%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="ちのYouTubeID"
+                data-letter="ち"
+                style="
+                top: 20%;
+                left: 60%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="つのYouTubeID"
+                data-letter="つ"
+                style="
+                top: 40%;
+                left: 60%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="てのYouTubeID"
+                data-letter="て"
+                style="
+                top: 60%;
+                left: 60%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="とのYouTubeID"
+                data-letter="と"
+                style="
+                top: 80%;
+                left: 60%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+
+              <!-- な行 -->
+              <button
+                class="finger-hotspot"
+                data-video-id="なのYouTubeID"
+                data-letter="な"
+                style="
+                top: 0%;
+                left: 50%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="にのYouTubeID"
+                data-letter="に"
+                style="
+                top: 20%;
+                left: 50%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="ぬのYouTubeID"
+                data-letter="ぬ"
+                style="
+                top: 40%;
+                left: 50%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="ねのYouTubeID"
+                data-letter="ね"
+                style="
+                top: 60%;
+                left: 50%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="ののYouTubeID"
+                data-letter="の"
+                style="
+                top: 80%;
+                left: 50%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+
+              <!-- は行 -->
+              <button
+                class="finger-hotspot"
+                data-video-id="はのYouTubeID"
+                data-letter="は"
+                style="
+                top: 0%;
+                left: 40%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="ひのYouTubeID"
+                data-letter="ひ"
+                style="
+                top: 20%;
+                left: 40%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="ふのYouTubeID"
+                data-letter="ふ"
+                style="
+                top: 40%;
+                left: 40%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="へのYouTubeID"
+                data-letter="へ"
+                style="
+                top: 60%;
+                left: 40%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="ほのYouTubeID"
+                data-letter="ほ"
+                style="
+                top: 80%;
+                left: 40%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+
+              <!-- ま行 -->
+              <button
+                class="finger-hotspot"
+                data-video-id="まのYouTubeID"
+                data-letter="ま"
+                style="
+                top: 0%;
+                left: 30%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="みのYouTubeID"
+                data-letter="み"
+                style="
+                top: 20%;
+                left: 30%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="むのYouTubeID"
+                data-letter="む"
+                style="
+                top: 40%;
+                left: 30%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="めのYouTubeID"
+                data-letter="め"
+                style="
+                top: 60%;
+                left: 30%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="ものYouTubeID"
+                data-letter="も"
+                style="
+                top: 80%;
+                left: 30%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+
+              <!-- や行、濁音、半濁音 -->
+              <button
+                class="finger-hotspot"
+                data-video-id="やのYouTubeID"
+                data-letter="や"
+                style="
+                top: 0%;
+                left: 20%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="濁音のYouTubeID"
+                data-letter="だくおん"
+                style="
+                top: 20%;
+                left: 20%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="ゆのYouTubeID"
+                data-letter="ゆ"
+                style="
+                top: 40%;
+                left: 20%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="半濁音のYouTubeID"
+                data-letter="はんだくおん"
+                style="
+                top: 60%;
+                left: 20%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="よのYouTubeID"
+                data-letter="よ"
+                style="
+                top: 80%;
+                left: 20%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+
+              <!-- ら行 -->
+              <button
+                class="finger-hotspot"
+                data-video-id="らのYouTubeID"
+                data-letter="ら"
+                style="
+                top: 0%;
+                left: 10%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="りのYouTubeID"
+                data-letter="り"
+                style="
+                top: 20%;
+                left: 10%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="るのYouTubeID"
+                data-letter="る"
+                style="
+                top: 40%;
+                left: 10%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="れのYouTubeID"
+                data-letter="れ"
+                style="
+                top: 60%;
+                left: 10%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="ろのYouTubeID"
+                data-letter="ろ"
+                style="
+                top: 80%;
+                left: 10%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+
+              <!-- わ行、促音、拗音、長音 -->
+              <button
+                class="finger-hotspot"
+                data-video-id="わのYouTubeID"
+                data-letter="わ"
+                style="
+                top: 0%;
+                left: 0%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="拗音、促音のYouTubeID"
+                data-letter="ようおん、そくおん"
+                style="
+                top: 20%;
+                left: 0%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="をのYouTubeID"
+                data-letter="を"
+                style="
+                top: 40%;
+                left: 0%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="長音のYouTubeID"
+                data-letter="ちょうおん"
+                style="
+                top: 60%;
+                left: 0%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+              <button
+                class="finger-hotspot"
+                data-video-id="んのYouTubeID"
+                data-letter="ん"
+                style="
+                top: 80%;
+                left: 0%;
+                width: 10%;
+                height: 20%;
+              ">
+              </button>
+
+          </div>
+
+            <div
+              class="finger-item-contents"
+              id="finger-item-contents">
+            </div>
+
+        </div>
+        <!-- 指文字：クイズ画面 -->
+        <div
+          class="quiz-screen"
+          id="finger-quiz-screen">
+
+          
+        <p class="subtitle" id="finger-quiz-subtitle">
+          したのどうがの ゆびもじをみて、
+          なまえをいれてね😊<br>
+          【ちゅうい】ひらがなでいれてね！
+        </p>
+
+
+          <div class="quiz-content">
+
+            <!-- YouTube動画 -->
+            <div
+              class="quiz-video"
+              id="finger-quiz-video">
+            </div>
+
+
+            <!-- 回答入力 -->
+            <div
+              class="answer-area"
+              id="finger-quiz-answer-area">
+
+              <input
+                type="text"
+                id="finger-quiz-answer-input"
+                placeholder="こたえを いれてね">
+
+              <button
+                type="button"
+                id="finger-quiz-answer-button">
+                こたえる
+              </button>
+
+            </div>
+
+
+            <!-- 正解を表示する場所 -->
+            <p
+              class="quiz-answer-title"
+              id="finger-quiz-answer-title">
+            </p>
+
+
+            <!-- 回答後に表示 -->
+            <div
+              class="quiz-after-buttons"
+              id="finger-quiz-after-buttons">
+
+              <a
+                href="#"
+                class="view-results-button"
+                id="finger-view-results-button">
+                けっかをみる
+              </a>
+
+              <a
+                href="#"
+                class="next-button"
+                id="finger-next-quiz-button">
+                つぎへ
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
+      </section>
+
+      
+        <!-- ゆびもじ：右側カテゴリー -->
+        <aside
+          class="category-list"
+          id="finger-category-list">
+
+          <button
+            class="finger-category-item active"
+            data-category="chart">
+            ゆびもじひょう
+          </button>
+
+          <button
+            class="finger-category-item"
+            data-category="friends-all">
+            おともだち（ぜんいん）
+          </button>
+
+          <button
+            class="finger-category-item"
+            data-category="friends-1">
+            おともだち（１くみ）
+          </button>
+
+          <button
+            class="finger-category-item"
+            data-category="friends-2">
+            おともだち（２くみ）
+          </button>
+
+          <button
+            class="finger-category-item"
+            data-category="teachers">
+            せんせい
+          </button>
+
+        </aside>
+
+
+    </div>
+
+  </main>
+
+</div>
+
+
+
+
+<!-- =========================
+     動画モーダル
+========================= -->
+
+<div class="video-modal" id="video-modal">
+
+  <div class="video-modal-content">
+
+    <button
+      type="button"
+      class="video-modal-close"
+      id="video-modal-close">
+      ×
+    </button>
+
+    <div
+      class="modal-youtube"
+      id="modal-youtube">
+    </div>
+
+    <p
+      class="modal-title"
+      id="modal-title">
+      覚える
+    </p>
+
+  </div>
+
+</div>
+
+
+
+<!-- =========================
+     静止画像モーダル
+========================= -->
+
+<div
+  class="image-modal"
+  id="image-modal">
+
+  <div class="image-modal-content">
+
+    <button
+      type="button"
+      class="image-modal-close"
+      id="image-modal-close">
+      ×
+    </button>
+
+    <img
+      src=""
+      alt=""
+      id="modal-image">
+
+    <p
+      class="image-modal-title"
+      id="image-modal-title">
+    </p>
+
+  </div>
+
+</div>
+
+
+
+
+
+<!-- =========================
+     指文字専用モーダル
+========================= -->
+
+<div
+  class="finger-spelling-modal"
+  id="finger-spelling-modal">
+
+  <div class="finger-spelling-modal-content">
+
+    <!-- 閉じるボタン -->
+    <button
+      type="button"
+      class="finger-modal-close"
+      id="finger-modal-close">
+      ×
+    </button>
+
+    <!-- 指文字画像と1文字ずつの文字 -->
+    <div
+      class="finger-modal-images"
+      id="finger-modal-images">
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+<!-- しゅわクイズ結果モーダル -->
+<div id="quiz-result-modal" class="quiz-result-modal"
+     role="dialog" aria-modal="true"
+     aria-labelledby="quiz-result-heading">
+
+  <div class="quiz-result-modal-content">
+
+    <button type="button"
+            id="quiz-result-close"
+            class="quiz-result-close"
+            aria-label="閉じる">×</button>
+
+    <h2 id="quiz-result-heading">クイズのけっか</h2>
+
+    <p id="quiz-result-score"></p>
+
+    <div id="quiz-result-list"></div>
+
+    <button type="button"
+            id="quiz-result-done"
+            class="quiz-result-done">とじる</button>
+
+  </div>
+</div>
+
+
+
+
+
+  <script src="script(2).js"></script>
+
+</body>
+
+</html>
