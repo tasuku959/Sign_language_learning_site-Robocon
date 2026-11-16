@@ -414,6 +414,7 @@ const categoryData = {
     {
       videoId: "ymiuHSRQ3qw",
       title: "おわる（おわった）",
+      answers: ["おわる", "おわった"],
       image: "images/item-contents/robocon/おわる.jpg"
     },
     {
@@ -424,6 +425,7 @@ const categoryData = {
     {
       videoId: "ymiuHSRQ3qw",
       title: "できる（だいじょうぶ）",
+      answers: ["できる", "だいじょうぶ"],
       image: "images/item-contents/robocon/できる.jpg"
     },
     {
@@ -434,6 +436,7 @@ const categoryData = {
     {
       videoId: "ymiuHSRQ3qw",
       title: "なに？どうした？",
+      answers: ["なに", "どうした"],
       image: "images/item-contents/robocon/なに、どうした.jpg"
     },
     {
@@ -1499,11 +1502,15 @@ quizAnswerButton.addEventListener("click", function() {
 
   signAnswered = true;
 
+  const isCorrect = currentQuizItem.answers
+  ? currentQuizItem.answers.includes(answer)
+  : answer === currentQuizItem.title;
+
   // 回答履歴を保存
   signResults.push({
     answer: answer,
     title: currentQuizItem.title,
-    correct: answer === currentQuizItem.title
+    correct: isCorrect
   });
 
   // 回答欄を非表示
@@ -1514,7 +1521,7 @@ quizAnswerButton.addEventListener("click", function() {
 showQuizAnswerWithImage(
   quizAnswerTitle,
   currentQuizItem.title,
-  answer === currentQuizItem.title
+  isCorrect
 );
 
 
