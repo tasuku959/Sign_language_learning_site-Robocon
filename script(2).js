@@ -1397,6 +1397,12 @@ function startQuiz() {
   signResults = [];
   signAnswered = false;
 
+  // 新しいクイズ開始時に回答欄を再表示
+  quizAnswerInput.style.display = "";
+  quizAnswerButton.style.display = "";
+
+  document.querySelector("#quiz-inline-results").style.display = "none";
+
   // 選択中カテゴリーの問題をコピー
   quizRemainingItems =
     [...categoryData[currentQuizCategoryKey]];
@@ -1421,6 +1427,8 @@ function showNextQuiz() {
   quizAfterButtons.style.display = "none";
 
   // 全問終了
+  
+  // 全問終了
   if (quizRemainingItems.length === 0) {
 
     quizVideo.textContent =
@@ -1430,13 +1438,66 @@ function showNextQuiz() {
 
     quizAnswerArea.style.display = "none";
 
-    // 結果を見るボタンだけ表示
-    quizAfterButtons.style.display = "flex";
+    // 全問終了後は回答欄と「こたえる」ボタンを非表示
+    quizAnswerArea.style.display = "none";
+    quizAnswerInput.style.display = "none";
+    quizAnswerButton.style.display = "none";
 
-    nextQuizButton.style.display = "none";
+    // 回答後のボタンを非表示
+    quizAfterButtons.style.display = "none";
+
+    // 正解数を計算
+    const correct = signResults.filter(
+      result => result.correct
+    ).length;
+
+    // 結果を表示する場所
+    const resultsArea =
+      document.querySelector("#quiz-inline-results");
+
+    const score =
+      document.querySelector("#quiz-inline-score");
+
+    const list =
+      document.querySelector("#quiz-inline-list");
+
+    // 正解数を表示
+    score.textContent =
+      "せいかい：" + correct + " / " +
+      signResults.length + "もん";
+
+    // 前回の結果を削除
+    list.replaceChildren();
+
+    // 各問題の結果を表示
+    signResults.forEach(function(result) {
+
+      const row = document.createElement("div");
+      row.className = "quiz-result-row";
+
+      const name = document.createElement("strong");
+
+      name.textContent =
+        (result.correct ? "○ " : "× ") + result.title;
+
+      const answer = document.createElement("span");
+
+      answer.textContent =
+        "こたえ：" + result.answer;
+
+      row.appendChild(name);
+      row.appendChild(answer);
+
+      list.appendChild(row);
+
+    });
+
+    // 結果を自動表示
+    resultsArea.style.display = "block";
 
     return;
   }
+
 
   quizVideo.classList.remove("quiz-complete");
   nextQuizButton.style.display = "";
@@ -1547,9 +1608,9 @@ nextQuizButton.addEventListener(
     showNextQuiz();
 
 
-    // 回答欄を再表示
+    // 次の問題があるときだけ回答欄を表示
     quizAnswerArea.style.display =
-      "flex";
+    currentQuizItem ? "flex" : "none";
 
 
     // 正解を非表示

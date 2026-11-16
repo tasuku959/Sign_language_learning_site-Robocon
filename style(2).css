@@ -1388,3 +1388,32 @@ CSSは手話側の .category-item と同じ見た目を使いたいので、ま�
   top: 45px;
   left: 0;
 }
+
+
+
+
+/* 全問終了後の結果表示 */
+#quiz-inline-results {
+  margin: 20px auto;
+  padding: 20px;
+  width: 90%;
+  background-color: #ffffff;
+  border: 2px solid #333;
+  border-radius: 12px;
+}
+
+#quiz-inline-score {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+#quiz-inline-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+#quiz-inline-list .quiz-result-row {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
